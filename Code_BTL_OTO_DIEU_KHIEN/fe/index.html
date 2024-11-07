@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Controller</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <h1>Car Controller</h1>
+
+    <div class="controls">
+      <button onclick="sendCommandToBackend('Tiến lên.')">Tiến lên</button>
+      <button onclick="sendCommandToBackend('Tiến sang bên trái.')">
+        Tiến sang bên trái
+      </button>
+      <button onclick="sendCommandToBackend('Tiến sang bên phải.')">
+        Tiến sang bên phải
+      </button>
+      <button onclick="sendCommandToBackend('Quay trái.')">Quay Trái</button>
+      <button onclick="sendCommandToBackend('Quay phải.')">Quay Phải</button>
+      <button onclick="sendCommandToBackend('Lùi lại.')">Lùi lại</button>
+      <button onclick="sendCommandToBackend('Lùi sang trái.')">
+        Lùi sang trái
+      </button>
+      <button onclick="sendCommandToBackend('Lùi sang phải.')">
+        Lùi sang phải
+      </button>
+      <button onclick="sendCommandToBackend('Dừng lại.')">Dừng lại</button>
+    </div>
+
+    <button class="record-btn" onclick="recordVoice()">RECORD</button>
+    <p id="status">Hãy bấm "RECORD" để bắt đầu thu âm</p>
+
+    <h2>Biểu đồ khoảng cách vật cản</h2>
+    <canvas id="obstacleChart" style="border: 1px solid #ddd"></canvas>
+
+    <script>
+      let chart;
+      async function fetchSensorData() {
+        const response = await fetch(
+          'https://api.thingspeak.com/channels/2681700/feeds.json?api_key=AQNH2YUMJGLPHMNO&results=10',
+        );
+        const data = await response.json();
+        return data.feeds.map((feed) => ({
+          time: feed.created_at,
+          value: feed.field1,
+        }));
+      }
+
+      // Hàm để vẽ hoặc cập nhật biểu đồ
+      async function drawChart() {
+        const sensorData = await fetchSensorData();
+        const labels = sensorData.map((data) => {
+          const date = new Date(data.time);
+          return date.getHours() + ':' + date.getMinutes(); // Hiển thị giờ:phút
+        });
+        const values = sensorData.map((data) => parseFloat(data.value));
+        const alertBox = document.getElementById('alert-box');
+        const ctx = document.getElementById('obstacleChart').getContext('2d');
+
+        // Nếu biểu đồ đã được tạo, cập nhật dữ liệu
+        if (chart) {
+          chart.data.labels = labels;
+          chart.data.datasets[0].data = values;
+          chart.update();
+        } else {
+          // Tạo biểu đồ nếu chưa tồn tại
+          chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  label: 'Distance',
+                  data: values,
+                  borderColor: 'red', // Đường màu đỏ
+                  backgroundColor: 'red', // Màu của điểm
+                  borderWidth: 2,
+                  pointRadius: 5, // Kích thước điểm
+                  pointBackgroundColor: 'red',
+                  fill: false,
+                },
+              ],
+            },
+            options: {
+              responsive: false, // Tắt responsive để cố định kích thước
+              maintainAspectRatio: false, // Tắt tỷ lệ mặc định
+              plugins: {
+                title: {
+                  display: true,
+                  // text: 'Obstacle Detection Sensor',
+                  font: {
+                    size: 16,
+                  },
+                },
+              },
+              scales: {
+                x: {
+                  title: {
+                    display: true,
+                    text: 'Time',
+                    font: {
+                      size: 12,
+                    },
+                  },
+                  ticks: {
+                    autoSkip: true,
+                    maxTicksLimit: 10,
+                  },
+                },
+                y: {
+                  title: {
+                    display: true,
+                    text: 'Distance',
+                    font: {
+                      size: 12,
+                    },
+                  },
+                  beginAtZero: true,
+                  max: 300,
+                },
+              },
+              elements: {
+                line: {
+                  tension: 0.2,
+                },
+              },
+            },
+          });
+        }
+      }
+
+      setInterval(drawChart, 1000);
+
+      drawChart();
+    </script>
+
+    <div class="alert" id="alert-box">Cảnh báo!!! Có vật thể đang lại gần</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@2.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+/* Căn giữa toàn bộ nội dung */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Tiêu đề chính */
+h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #333;
+}
+
+/* Căn giữa các nút điều khiển */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.controls button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.controls button:hover {
+  background-color: #45a049;
+}
+
+/* Nút RECORD */
+.record-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.record-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Trạng thái thu âm */
+#status {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Biểu đồ khoảng cách vật cản */
+canvas {
+  width: 600px;
+  height: 400px;
+  margin-bottom: 20px;
+}
+
+/* Hộp cảnh báo */
+.alert {
+  display: none;
+  background-color: #ff9800;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+/* Tiêu đề Biểu đồ */
+h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Thêm một chút hiệu ứng vào các nút */
+button {
+  transition: transform 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.95);
+}

@@ -1,0 +1,124 @@
+label,value
+tiến lên,F
+đi lên,F
+tiến lên phía trước,F
+di chuyển về phía trước,F
+bước tới,F
+tiến tới,F
+đi thẳng,F
+thẳng tiến,F
+tiến nhanh lên,F
+di chuyển lên trên,F
+đi tới trước,F
+move forward,F
+go forward,F
+step forward,F
+proceed forward,F
+move ahead,F
+go straight,F
+keep moving forward,F
+advance forward,F
+lùi lại,B
+đi lùi,B
+di chuyển lùi lại,B
+bước lùi,B
+thụt lùi,B
+lùi nhanh,B
+quay đầu về sau,B
+đi về sau,B
+move backward,B
+go backward,B
+step backward,B
+move in reverse,B
+retreat,B
+go back,B
+reverse,B
+quay trái,l
+sang trái,l
+rẽ trái,l
+quẹo trái,l
+di chuyển sang trái,l
+đi về bên trái,l
+rẽ về trái,l
+ngả trái,l
+bẻ lái trái,l
+xoay trái,l
+turn left,l
+go left,l
+move left,l
+veer left,l
+shift left,l
+rotate left,l
+quay phải,r
+rẽ phải,r
+quẹo phải,r
+di chuyển sang phải,r
+đi về bên phải,r
+rẽ về phải,r
+ngả phải,r
+bẻ lái phải,r
+xoay phải,r
+turn right,r
+go right,r
+move right,r
+veer right,r
+shift right,r
+rotate right,r
+dừng lại,S
+ngừng di chuyển,S
+không di chuyển nữa,S
+ngừng lại,S
+đứng im,S
+tạm dừng,S
+chờ một lát,S
+đứng yên tại chỗ,S
+stop,S
+halt,S
+stand still,S
+pause,S
+wait a moment,S
+freeze,S
+tiến sang bên trái,G
+tiến sang trái,G
+tiến trái,G
+đi sang trái,G
+di chuyển lên và sang trái,G
+tiến lên bên trái,G
+bước tới bên trái,G
+đi lên trái,G
+move forward left,G
+go forward left,G
+proceed left,G
+tiến sang bên phải,I
+tiếng sang phải,I
+tiến phải,I
+đi sang phải,I
+di chuyển lên và sang phải,I
+tiến lên bên phải,I
+bước tới bên phải,I
+đi lên phải,I
+move forward right,I
+go forward right,I
+proceed right,I
+lùi sang bên trái,H
+lùi sang trái,H
+lúi trái,H
+di chuyển lùi và sang trái,H
+lùi về bên trái,H
+bước lùi trái,H
+đi lùi về trái,H
+move backward left,H
+go backward left,H
+retreat left,H
+reverse left,H
+lùi sang bên phải,J
+lùi sang phải,J
+lùi phải,J
+di chuyển lùi và sang phải,J
+lùi về bên phải,J
+bước lùi phải,J
+đi lùi về phải,J
+move backward right,J
+go backward right,J
+retreat right,J
+reverse right,J
